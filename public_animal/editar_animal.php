@@ -10,7 +10,7 @@ $consulta->bind_param("i", $id);
 $consulta->execute();
 
 $resultado = $consulta->get_result();
-$animal = $resultado->fetch_assoc();
+$animais = $resultado->fetch_assoc();
 
 ?>
 
