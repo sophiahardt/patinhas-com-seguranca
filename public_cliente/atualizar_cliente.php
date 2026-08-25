@@ -20,7 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->bind_param("ssssi", $nome, $email, $telefone, $endereco, $id);
 
     if ($stmt->execute()) {
-        echo "Cliente atualizado com sucesso!";
+        header("Location: ../index.php");
+        exit;
     } else {
         echo "Erro ao atualizar cliente: " . $stmt->error;
     }

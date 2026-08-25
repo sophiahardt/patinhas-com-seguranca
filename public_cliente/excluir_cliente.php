@@ -14,7 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->bind_param("i", $id);
 
     if ($stmt->execute()) {
-        echo "Cliente excluído com sucesso!";
+        header("Location: ../index.php");
+        exit;
     } else {
         echo "Erro ao excluir cliente: " . $stmt->error;
     }
