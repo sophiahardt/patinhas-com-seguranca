@@ -3,10 +3,14 @@
 include "../infra/conexao.php";
 
 $id = $_GET["id"];
-$sql = "SELECT * FROM animais WHERE id = $id";
-$resultado = $mysqli_query($conexao, $sql );
+$sql = "SELECT * FROM animais WHERE id = ?";
 
-$animais = mysqli_fetch_assoc($resultado);
+$consulta = $conexao->prepare($sql);
+$consulta->bind_param("i", $id);
+$consulta->execute();
+
+$resultado = $consulta->get_result();
+$animal = $resultado->fetch_assoc();
 
 ?>
 
