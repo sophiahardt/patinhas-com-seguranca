@@ -11,14 +11,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $sql = "INSERT INTO clientes (nome, email, telefone, endereco) VALUES (?, ?, ?, ?)";
 
     $stmt = $conexao->prepare($sql);
+
     if ($stmt === false) {
-        die("Erro na conexão!" . $conexao->error);
+        die("Erro ao preparar a consulta: " . $conexao->error);
     }
 
     $stmt->bind_param("ssss", $nome, $email, $telefone, $endereco);
 
     if ($stmt->execute()) {
-        echo "Cliente cadastrado com sucesso!";
+        header("Location: ../index.php");
+        exit;
     } else {
         echo "Erro ao cadastrar cliente: " . $stmt->error;
     }

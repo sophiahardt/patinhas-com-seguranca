@@ -12,15 +12,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $stmt = $conexao->prepare($sql);
     if ($stmt === false) {
-        die("Erro na conexão!" . $conexao->error);
+        die("Erro ao preparar a consulta: " . $conexao->error);
     }
     $stmt->bind_param("sssi", $nome_animal, $especie, $raca, $idade);
-    
+
     if ($stmt->execute()) {
-        echo "Animal cadastrado com sucesso!";
+        header("Location: ../index.php");
+        exit;
     } else {
-        echo "Erro ao cadastrar animal!";
+        echo "Erro ao cadastrar animal: " . $stmt->error;
     }
+
     $stmt->close();
 }
 ?>
