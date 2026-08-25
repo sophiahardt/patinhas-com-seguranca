@@ -11,11 +11,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $sql = "INSERT INTO animais (nome, especie, raca, idade) VALUES (?, ?, ?, ?)";
 
     $stmt = $conexao->prepare($sql);
+
     if ($stmt === false) {
         die("Erro na preparação da declaração: " . $conexao->error);
     }
 
-    $stmt->bind_param("ssss", $nome, $especie, $raca, $idade);
+    $stmt->bind_param("sssi", $nome, $especie, $raca, $idade);
 
     if ($stmt->execute()) {
         echo "Animal cadastrado com sucesso!";
@@ -25,6 +26,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $stmt->close();
 }
-
 
 ?>

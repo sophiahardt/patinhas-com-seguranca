@@ -12,12 +12,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $sql = "UPDATE clientes SET nome = ?, email = ?, telefone = ?, endereco = ? WHERE id = ?";
 
     $stmt = $conexao->prepare($sql);
+
     if ($stmt === false) {
-        die("Erro na conexão!" . $conexao->error);
+        die("Erro na preparação da declaração: " . $conexao->error);
     }
 
     $stmt->bind_param("ssssi", $nome, $email, $telefone, $endereco, $id);
-    $stmt->execute();
 
     if ($stmt->execute()) {
         echo "Cliente atualizado com sucesso!";
