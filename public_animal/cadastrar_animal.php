@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($stmt === false) {
         die("Erro ao preparar a consulta: " . $conexao->error);
     }
-    $stmt->bind_param("sssi", $nome, $especie, $raca, $idade, $cliente_id);
+    $stmt->bind_param("sssii", $nome, $especie, $raca, $idade, $cliente_id);
 
     if ($stmt->execute()) {
         header("Location: ../index.php");
