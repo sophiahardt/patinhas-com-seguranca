@@ -62,27 +62,67 @@ $animais = $consultaAnimais->get_result();
 
             <?php while ($cliente = $clientes->fetch_assoc()) { ?>
 
-            <tr>
-                <td><?php echo $cliente["id"]; ?></td>
-                <td><?php echo $cliente["nome"]; ?></td>
-                <td><?php echo $cliente["email"]; ?></td>
-                <td><?php echo $cliente["telefone"]; ?></td>
-                <td><?php echo $cliente["endereco"]; ?></td>
+                <tr>
+                    <td><?php echo $cliente["id"]; ?></td>
+                    <td><?php echo $cliente["nome"]; ?></td>
+                    <td><?php echo $cliente["email"]; ?></td>
+                    <td><?php echo $cliente["telefone"]; ?></td>
+                    <td><?php echo $cliente["endereco"]; ?></td>
 
-                <td>
-                    <a href="public/editar_cliente.php?id=<?php echo $cliente["id"]; ?>">
-                        Editar
-                    </a>
-                    <form action="public/excluir_cliente.php" method="POST" style="display:inline;">
-                        <input type="hidden" name="id" value="<?php echo $cliente["id"]; ?>">
-                        <button type="submit">Excluir</button>
-                    </form>
-                </td>
-            </tr>
-        <?php } ?>
+                    <td>
+                        <a href="public/editar_cliente.php?id=<?php echo $cliente["id"]; ?>">
+                            Editar
+                        </a>
+                        <form action="public/excluir_cliente.php" method="POST" style="display:inline;">
+                            <input type="hidden" name="id" value="<?php echo $cliente["id"]; ?>">
+                            <button type="submit">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+            <?php } ?>
 
         </table>
-        
+
+        <h2>Cadastre um animal</h2>
+
+        <form action="public/cadastrar_animal.php" method="POST">
+
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" required>
+            <br>
+
+            <label for="especie">Espécie:</label>
+            <input type="text" name="especie" required>
+            <br>
+
+            <label for="raca">Raça:</label>
+            <input type="text" name="raca">
+            <br>
+
+            <label for="idade">Idade:</label>
+            <input type="number" name="idade">
+            <br>
+
+            <label for="cliente_id">Responsável:</label>
+
+            <select name="cliente_id" required>
+                <option value="">Selecione um cliente</option>
+
+                <?php while ($cliente = $clientes->fetch_assoc()) { ?>
+
+                    <option value="<?php echo $cliente["id"]; ?>">
+                        <?php echo $cliente["nome"]; ?>
+                    </option>
+
+                <?php } ?>
+
+            </select>
+
+            <br>
+
+            <button type="submit">Cadastrar</button>
+
+        </form>
 
         <h2>Animais cadastrados</h2>
 
@@ -99,28 +139,28 @@ $animais = $consultaAnimais->get_result();
 
             <?php while ($animal = $animais->fetch_assoc()) { ?>
 
-            <tr>
+                <tr>
 
-                <td><?php echo $animal["id"]; ?></td>
-                <td><?php echo $animal["nome"]; ?></td>
-                <td><?php echo $animal["especie"]; ?></td>
-                <td><?php echo $animal["raca"]; ?></td>
-                <td><?php echo $animal["idade"]; ?></td>
-                <td><?php echo $animal["nome_cliente"]; ?></td>
-        
-                <td>
-                    <a href="public/editar_animais.php?id_animal=<?php echo $animal["id"]; ?>">
-                        Editar
-                    </a>
-                    <form action="public/excluir_animal.php" method="POST" style="display:inline;">
-                        <input type="hidden" name="id" value="<?php echo $animal["id"]; ?>">
-                        <button type="submit">Excluir</button>
-                    </form>
-                </td>
-            </tr>
-        
-        <?php } ?>
-        
+                    <td><?php echo $animal["id"]; ?></td>
+                    <td><?php echo $animal["nome"]; ?></td>
+                    <td><?php echo $animal["especie"]; ?></td>
+                    <td><?php echo $animal["raca"]; ?></td>
+                    <td><?php echo $animal["idade"]; ?></td>
+                    <td><?php echo $animal["nome_cliente"]; ?></td>
+
+                    <td>
+                        <a href="public/editar_animais.php?id_animal=<?php echo $animal["id"]; ?>">
+                            Editar
+                        </a>
+                        <form action="public/excluir_animal.php" method="POST" style="display:inline;">
+                            <input type="hidden" name="id" value="<?php echo $animal["id"]; ?>">
+                            <button type="submit">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+
+            <?php } ?>
+
         </table>
 
 
