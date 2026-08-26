@@ -1,5 +1,5 @@
 <?php
-include "../infra/conexao.php";
+include "infra/conexao.php";
 
 $sqlClientes = "SELECT * FROM clientes";
 $consultaClientes = $conexao->prepare($sqlClientes);
@@ -37,7 +37,7 @@ $animais = $consultaAnimais->get_result();
 
     <main>
         <h2>Cadastre um cliente</h2>
-        <form action="public/cadastrar_cliente.php" method="POST">
+        <form action="public_cliente/cadastrar_cliente.php" method="POST">
             <label for="nome">Nome:</label>
             <input type="text" name="nome" required>
             <br>
@@ -75,10 +75,10 @@ $animais = $consultaAnimais->get_result();
                     <td><?php echo $cliente["endereco"]; ?></td>
 
                     <td>
-                        <a href="public/editar_cliente.php?id=<?php echo $cliente["id"]; ?>">
+                        <a href="public_cliente/editar_cliente.php?id=<?php echo $cliente["id"]; ?>">
                             Editar
                         </a>
-                        <form action="public/excluir_cliente.php" method="POST" style="display:inline;">
+                        <form action="public_cliente/excluir_cliente.php" method="POST" style="display:inline;">
                             <input type="hidden" name="id" value="<?php echo $cliente["id"]; ?>">
                             <button type="submit">Excluir</button>
                         </form>
@@ -90,7 +90,7 @@ $animais = $consultaAnimais->get_result();
 
         <h2>Cadastre um animal</h2>
 
-        <form action="public/cadastrar_animal.php" method="POST">
+        <form action="public_animal/cadastrar_animal.php" method="POST">
 
             <label for="nome">Nome:</label>
             <input type="text" name="nome" required>
@@ -154,7 +154,7 @@ $animais = $consultaAnimais->get_result();
                     <td><?php echo $animal["nome_cliente"]; ?></td>
 
                     <td>
-                        <a href="public/editar_animais.php?id_animal=<?php echo $animal["id"]; ?>">
+                        <a href="public_animal/editar_animais.php?id_animal=<?php echo $animal["id"]; ?>">
                             Editar
                         </a>
                         <form action="public/excluir_animal.php" method="POST" style="display:inline;">
