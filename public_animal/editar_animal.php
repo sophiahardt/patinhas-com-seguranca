@@ -2,7 +2,7 @@
 
 include "../infra/conexao.php";
 
-$id = $_GET["id"];
+$id = $_GET["id_animal"];
 $sql = "SELECT * FROM animais WHERE id = ?";
 
 $consulta = $conexao->prepare($sql);
@@ -10,7 +10,7 @@ $consulta->bind_param("i", $id);
 $consulta->execute();
 
 $resultado = $consulta->get_result();
-$animais = $resultado->fetch_assoc();
+$animal = $resultado->fetch_assoc();
 
 ?>
 
@@ -29,21 +29,21 @@ $animais = $resultado->fetch_assoc();
         <h1>AUmigos - Patinhas com Segurança</h1>
     </header>
     <main>
-        <h2>Editando o animal <?php echo $animais["nome"]?>!</h2>
+        <h2>Editando o animal <?php echo $animal["nome"]?>!</h2>
         <form action="atualizar.php" method="POST">
-            <input type="hidden" name="id" value="<?php echo $animais["id"]?>">
+            <input type="hidden" name="id" value="<?php echo $animal["id"]?>">
 
             <label for="nome">Nome:</label>
-            <input type="text" name="nome" value="<?php echo $animais["nome"]?>">
+            <input type="text" name="nome" value="<?php echo $animal["nome"]?>">
             <br>
             <label for="especie">Especie:</label>
-            <input type="text" name="especie" value="<?php echo $animais["especie"]?>">
+            <input type="text" name="especie" value="<?php echo $animal["especie"]?>">
             <br>
             <label for="raca">Raça:</label>
-            <input type="text" name="raca" value="<?php echo $animais["raca"]?>">
+            <input type="text" name="raca" value="<?php echo $animal["raca"]?>">
             <br>
             <label for="idade">Idade:</label>
-            <input type="text" name="idade" value="<?php echo $animais["idade"]?>">
+            <input type="text" name="idade" value="<?php echo $animal["idade"]?>">
             <br>
             <button type="submit">Atualizar</button>
         </form>
