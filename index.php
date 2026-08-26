@@ -154,10 +154,10 @@ $animais = $consultaAnimais->get_result();
                     <td><?php echo $animal["nome_cliente"]; ?></td>
 
                     <td>
-                        <a href="public_animal/editar_animais.php?id_animal=<?php echo $animal["id"]; ?>">
+                        <a href="public_animal/editar_animal.php?id_animal=<?php echo $animal["id"]; ?>">
                             Editar
                         </a>
-                        <form action="public/excluir_animal.php" method="POST" style="display:inline;">
+                        <form action="public_animal/excluir_animal.php" method="POST" style="display:inline;">
                             <input type="hidden" name="id" value="<?php echo $animal["id"]; ?>">
                             <button type="submit">Excluir</button>
                         </form>
