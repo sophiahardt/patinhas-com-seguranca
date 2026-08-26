@@ -65,7 +65,7 @@ $animais = $consultaAnimais->get_result();
                 <th>Ações</th>
             </tr>
 
-            <?php while ($cliente = $clientes->fetch_assoc()) { ?>
+            <?php foreach ($clientes as $cliente) { ?>
 
                 <tr>
                     <td><?php echo $cliente["id"]; ?></td>
@@ -113,7 +113,7 @@ $animais = $consultaAnimais->get_result();
             <select name="cliente_id" required>
                 <option value="">Selecione um cliente</option>
 
-                <?php while ($cliente = $clientes->fetch_assoc()) { ?>
+                <?php foreach ($clientes as $cliente) { ?>
 
                     <option value="<?php echo $cliente["id"]; ?>">
                         <?php echo $cliente["nome"]; ?>
