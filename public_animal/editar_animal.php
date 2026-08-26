@@ -30,7 +30,7 @@ $animal = $resultado->fetch_assoc();
     </header>
     <main>
         <h2>Editando o animal <?php echo $animal["nome"]?>!</h2>
-        <form action="atualizar.php" method="POST">
+        <form action="atualizar_animal.php" method="POST">
             <input type="hidden" name="id" value="<?php echo $animal["id"]?>">
 
             <label for="nome">Nome:</label>
