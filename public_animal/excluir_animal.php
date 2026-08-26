@@ -4,7 +4,7 @@ include "../infra/conexao.php";
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $id = $_POST["id"];
 
-    $sql = "DELETE FROM clientes WHERE id = ?";
+    $sql = "DELETE FROM animais WHERE id = ?";
 
     $stmt = $conexao->prepare($sql);
     if ($stmt === false) {
@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         header("Location: ../index.php");
         exit;
     } else {
-        echo "Erro ao excluir cliente: " . $stmt->error;
+        echo "Erro ao excluir animal: " . $stmt->error;
     }
 
     $stmt->close();
