@@ -4,7 +4,13 @@ include "../infra/conexao.php";
 $sqlClientes = "SELECT * FROM clientes";
 $consultaClientes = $conexao->prepare($sqlClientes);
 $consultaClientes->execute();
-$clientes = $consultaClientes->get_result();
+$resultadoClientes = $consultaClientes->get_result();
+
+$clientes = [];
+
+while ($cliente = $resultadoClientes->fetch_assoc()) {
+    $clientes[] = $cliente;
+}
 
 $sqlAnimais = "SELECT animais.*, clientes.nome AS nome_cliente
                FROM animais
@@ -14,7 +20,6 @@ $sqlAnimais = "SELECT animais.*, clientes.nome AS nome_cliente
 $consultaAnimais = $conexao->prepare($sqlAnimais);
 $consultaAnimais->execute();
 $animais = $consultaAnimais->get_result();
-
 ?>
 
 <html lang="en">
