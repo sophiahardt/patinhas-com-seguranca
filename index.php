@@ -70,17 +70,17 @@ $animais = $consultaAnimais->get_result();
                 <td><?php echo $cliente["endereco"]; ?></td>
 
                 <td>
-                    <a href="public/editar_clientes.php?id_cliente=<?php echo $cliente["id"]; ?>">
+                    <a href="public/editar_cliente.php?id=<?php echo $cliente["id"]; ?>">
                         Editar
                     </a>
-                    <a href="public/excluir_clientes.php?id_cliente=<?php echo $cliente["id"]; ?>">
-                        Excluir
-                    </a>
+                    <form action="public/excluir_cliente.php" method="POST" style="display:inline;">
+                        <input type="hidden" name="id" value="<?php echo $cliente["id"]; ?>">
+                        <button type="submit">Excluir</button>
+                    </form>
                 </td>
             </tr>
+        <?php } ?>
 
-            <?php } ?>
-                    
         </table>
         
 
@@ -112,13 +112,15 @@ $animais = $consultaAnimais->get_result();
                     <a href="public/editar_animais.php?id_animal=<?php echo $animal["id"]; ?>">
                         Editar
                     </a>
-                    <a href="public/excluir_animais.php?id_animal=<?php echo $animal["id"]; ?>">
-                        Excluir
-                    </a>
+                    <form action="public/excluir_animal.php" method="POST" style="display:inline;">
+                        <input type="hidden" name="id" value="<?php echo $animal["id"]; ?>">
+                        <button type="submit">Excluir</button>
+                    </form>
                 </td>
             </tr>
         
-            <?php } ?>
+        <?php } ?>
+        
         </table>
 
 
